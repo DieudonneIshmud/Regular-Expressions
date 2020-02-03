@@ -1,0 +1,39 @@
+[89]00[-.]\d\d\d[-.]\d\d\d\d
+\d\d\d[-.]\d\d\d[-.]\d\d\d\d
+\d\d\d[-]\d\d\d.\d\d\d\d
+\d\d\d.\d\d\d.\d\d\d\d         // any three digits followed by any character then other 3 digits etc.....
+\d{3}.\d{3}.\d{4}     // just like in line 4, but using quantifiers
+[a-zA-Z]                           // matching all characters regardless of wether they are capital letters or small charlespatterson
+[^]        // this one negates the matching of  ^ once it is within a character set. ^ is to match the begining of a string
+[^a-z]     // when ^ is used with another pattern in a character set, it negates that pattern
+          //the above matches any character not in lowercase
+
+
+[^b]at          // want to match any word that ends with << at >> excluding the world "bat" (assuming it's within the search base)
+
+\w[Mr|MrsZ]             // this is wrong
+              // matching prefixes as well as the names after
+  Mr\.?\s[A-Z]\w*       // searches the word starting with Mr, followed by 0 or 1 and a space "."
+                      // then any uppercase character followed by Zero or more words ==> \w*
+
+M(r|s|rs)\.?\s[A-Z]\w*     // to find the cases for Ms and Mrs
+
+ // Based on the emails.txt file
+[a-zA-Z]+@[a-zA-Z]+\.com         // regular expression that matches an email address with both Upper and lowercase which ends with .com
+
+[a-zA-Z.]+@[a-zA-Z]+\.(com|edu)
+[a-zA-Z0-9.-]+@[a-zA-Z-]+\.(com|edu|net)      OR
+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
+
+
+// Based on the URLs.txt file
+
+https?://[a-zA-Z]+.[a-zA-Z]+.(com|gov)  // RE to match an URL
+
+https?://[a-zA-Z]+.[a-zA-Z]+.(com|gov)
+
+// does the same thing like Line 34 BUT more efficiently
+https?://(www\.)?\w+\.\w+
+
+// But IF we need to capture specific information from the URLs we do this :
+// for EG  to choose only the Domain name and Top level domains (eg: google.com) we do the following
